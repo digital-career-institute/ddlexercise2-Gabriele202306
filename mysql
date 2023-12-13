@@ -1,0 +1,65 @@
+mysql> CREATE TABLE Books (
+    -> book_id INTEGER PRIMARY KEY,
+    -> title VARCHAR(100) NOT NULL,
+    -> author VARCHAR(50),
+    -> publish_date DATE NOT NULL
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> ALTER TABLE Books
+    -> MODIFY COLUMN author VARCHAR(50) NOT NULL;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> Describe Books;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| book_id      | int          | NO   | PRI | NULL    |       |
+| title        | varchar(100) | NO   |     | NULL    |       |
+| author       | varchar(50)  | NO   |     | NULL    |       |
+| publish_date | date         | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE Books ADD genre VARCHAR(50);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DEscribe Books;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| book_id      | int          | NO   | PRI | NULL    |       |
+| title        | varchar(100) | NO   |     | NULL    |       |
+| author       | varchar(50)  | NO   |     | NULL    |       |
+| publish_date | date         | NO   |     | NULL    |       |
+| genre        | varchar(50)  | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Employees (
+    -> employee_id INTEGER PRIMARY KEY,
+    -> employee_name VARCHAR(50) NOT NULL,
+    -> department VARCHAR(50),
+    -> salary DECIMAL
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> DESCRIBE Employees;
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| employee_id   | int           | NO   | PRI | NULL    |       |
+| employee_name | varchar(50)   | NO   |     | NULL    |       |
+| department    | varchar(50)   | YES  |     | NULL    |       |
+| salary        | decimal(10,0) | YES  |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> DROP TABLE Employees;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> DESCRIBE Employees;
+ERROR 1146 (42S02): Table 'db1.employees' doesn't exist
+mysql>
